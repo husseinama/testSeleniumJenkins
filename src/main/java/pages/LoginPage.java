@@ -8,6 +8,7 @@ public class LoginPage {
     private final By userNameField = By.id("username");
     private final By passwordField = By.id("password");
     private final By loginBtn = By.cssSelector("#login button");
+    private final By flashBanner = By.id("flash-messages");
 
 
     public LoginPage(WebDriver driver){
@@ -20,6 +21,9 @@ public class LoginPage {
 
     public void setPassword(String password){
         driver.findElement(passwordField).sendKeys(password);
+    }
+    public String getAlertText(){
+        return driver.findElement(flashBanner).getText();
     }
 
     public SecureAreaPage clickLoginBtn(){

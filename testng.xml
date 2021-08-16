@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testGithubIntegration" thread-count="2" parallel="tests">
+    <test name="testSuccessfullLogin">
+        <classes>
+            <class name="base.LoginTest"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="testInsuccessfullLogin">
+        <classes>
+            <class name="base.LoginTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
