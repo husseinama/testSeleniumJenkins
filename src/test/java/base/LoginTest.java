@@ -1,25 +1,29 @@
 package base;
 
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.SecureAreaPage;
 
 import static org.testng.Assert.*;
 
 public class LoginTest extends BaseTest{
+    LoginPage loginPage = new LoginPage(driver);
+    HomePage homePage = new HomePage(driver);
+    SecureAreaPage secureAreaPage = new SecureAreaPage(driver);
 
     @Test
     public void testSuccessfullLogin()  {
-        LoginPage loginPage = homePage.clickFormAuthentication();
+        homePage.clickFormAuthentication();
         loginPage.setUserName("tomsmith");
         loginPage.setPassword("SuperSecretPassword!");
-        SecureAreaPage secureAreaPage = loginPage.clickLoginBtn();
+        loginPage.clickLoginBtn();
         assertTrue(secureAreaPage.getAlertText().contains("You logged into a secure area!"),"Alert text is incorrect");
     }
 
     @Test
     public void testInsuccessfullLogin() {
-        LoginPage loginPage = homePage.clickFormAuthentication();
+        homePage.clickFormAuthentication();
         loginPage.setUserName("test");
         loginPage.setPassword("Super");
         loginPage.clickLoginBtn();

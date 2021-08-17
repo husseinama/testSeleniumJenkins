@@ -4,30 +4,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    private final WebDriver driver;
-    private final By userNameField = By.id("username");
-    private final By passwordField = By.id("password");
-    private final By loginBtn = By.cssSelector("#login button");
-    private final By flashBanner = By.id("flash-messages");
-
+    WebDriver driver;
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void setUserName(String userName){
+    public LoginPage setUserName(String userName){
+        By userNameField = By.id("username");
         driver.findElement(userNameField).sendKeys(userName);
+        return this;
     }
 
-    public void setPassword(String password){
+    public LoginPage setPassword(String password){
+        By passwordField = By.id("password");
         driver.findElement(passwordField).sendKeys(password);
+        return this;
     }
     public String getAlertText(){
-        return driver.findElement(flashBanner).getText();
+        By flashBanner = By.id("flash-messages");
+        String alertText = driver.findElement(flashBanner).getText();
+        return alertText;
     }
 
-    public SecureAreaPage clickLoginBtn(){
+    public LoginPage clickLoginBtn(){
+        By loginBtn = By.cssSelector("#login button");
         driver.findElement(loginBtn).click();
-        return new SecureAreaPage(driver);
+        return this;
     }
 }
