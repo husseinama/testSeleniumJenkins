@@ -2,34 +2,31 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class LoginPage {
-    WebDriver driver;
+public class LoginPage extends PageBase{
 
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
-    public LoginPage setUserName(String userName){
-        By userNameField = By.id("username");
-        driver.findElement(userNameField).sendKeys(userName);
-        return this;
+    public void setUserName(String userName){
+        WebElement userNameField = driver.findElement(By.id("username"));
+        sendKeys(userNameField,userName);
     }
 
-    public LoginPage setPassword(String password){
-        By passwordField = By.id("password");
-        driver.findElement(passwordField).sendKeys(password);
-        return this;
+    public void setPassword(String password){
+        WebElement passwordField = driver.findElement(By.id("password"));
+        sendKeys(passwordField,password);
     }
+
     public String getAlertText(){
-        By flashBanner = By.id("flash-messages");
-        String alertText = driver.findElement(flashBanner).getText();
+        String alertText = driver.findElement(By.id("flash-messages")).getText();
         return alertText;
     }
 
-    public LoginPage clickLoginBtn(){
-        By loginBtn = By.cssSelector("#login button");
-        driver.findElement(loginBtn).click();
-        return this;
-    }
+//    public void clickLoginBtn(){
+//        WebElement loginBtn = driver.findElement(By.cssSelector("#login button"));
+//        click(loginBtn);
+//    }
 }

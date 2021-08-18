@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest{
         homePage.clickFormAuthentication();
         loginPage.setUserName("tomsmith");
         loginPage.setPassword("SuperSecretPassword!");
-        loginPage.clickLoginBtn();
+        //loginPage.clickLoginBtn();
         assertTrue(secureAreaPage.getAlertText().contains("You logged into a secure area!"),"Alert text is incorrect");
     }
 
@@ -26,7 +26,7 @@ public class LoginTest extends BaseTest{
         homePage.clickFormAuthentication();
         loginPage.setUserName("test");
         loginPage.setPassword("Super");
-        loginPage.clickLoginBtn();
+       // loginPage.clickLoginBtn();
         assertTrue(loginPage.getAlertText().contains("Your username is invalid!"),"Alert text is incorrect");
     }
 }
